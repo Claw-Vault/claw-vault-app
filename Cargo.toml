@@ -1,0 +1,36 @@
+[package]
+name = "claw-vault-app"
+version = "0.1.0"
+authors = ["Shashank Verma <shashank.verma2002@gmail.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = { version = "0.4.39", features = ["serde"] }
+dioxus = { version = "=0.6.1", features = ["router", "fullstack"] }
+dioxus-fullstack = "=0.6.1"
+dioxus-clipboard = "=0.2.0"
+reqwest = { version = "0.12.12", features = ["json"] }
+serde = { version = "1.0.217", features = ["derive"] }
+
+[build-dependencies]
+dotenv = "0.15.0"
+
+[features]
+default = ["web"]
+web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]
+mobile = ["dioxus/mobile"]
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"

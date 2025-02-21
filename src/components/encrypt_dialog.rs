@@ -18,14 +18,16 @@ pub fn EncryptDialog(
                 class: "relative",
                 id: "modal",
                 role: "dialog",
+
                 div {
-                    class: "z-30 fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity opacity-100",
+                    class: "z-30 fixed inset-0 bg-white/70 bg-opacity-75 transition-opacity opacity-100",
                     id: "backdrop",
                 }
+
                 div { class: "fixed inset-0 z-40 w-screen overflow-y-auto",
                     div { class: "flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0",
                         div {
-                            class: "relative transform overflow-hidden flex flex-col flex-grow rounded-lg bg-accent px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6",
+                            class: "relative transform overflow-hidden flex flex-col flex-grow rounded-lg bg-brand px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6",
                             id: "dialog",
 
                             if show_data() {
@@ -123,10 +125,10 @@ pub fn EncryptDialog(
 
                             if show_progress() {
                                 div {
-                                    class: "mx-auto flex-grow rounded-full",
+                                    class: "mx-auto flex-grow rounded-full bg-brand",
                                     id: "progress",
                                     svg {
-                                        class: "w-8 h-8 text-gray-200 animate-spin fill-gray-900",
+                                        class: "w-8 h-8 text-white animate-spin fill-dark-brand",
                                         fill: "none",
                                         view_box: "0 0 100 101",
                                         xmlns: "http://www.w3.org/2000/svg",

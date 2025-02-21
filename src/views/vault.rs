@@ -8,7 +8,7 @@ pub fn Vault(id: String) -> Element {
 
     rsx! {
         section {
-            class: "relative isolate overflow-hidden bg-gray-900",
+            class: "relative isolate overflow-hidden",
             id: "claw",
 
             SquarePattern { }
@@ -16,25 +16,25 @@ pub fn Vault(id: String) -> Element {
             div { class: "mx-auto max-w-7xl pb-24 pt-4 sm:pb-32 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:py-40",
                 div { class: "mt-20 sm:mt-24 md:mx-auto md:max-w-2xl lg:mx-0 lg:mt-0 lg:w-screen",
                     div { class: "shadow-lg md:rounded-3xl",
-                        div { class: "bg-accent [clip-path:inset(0)] md:[clip-path:inset(0_round_theme(borderRadius.3xl))]",
+                        div { class: "bg-brand [clip-path:inset(0)] md:[clip-path:inset(0_round_theme(borderRadius.3xl))]",
                             div { class: "mx-auto max-w-2xl lg:mx-0 p-16 lg:flex-auto",
                                 form {
                                     action: "\\#",
                                     method: "dialog",
                                     "onsubmit": "decryptData()",
-                                    h1 { class: "mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-800 sm:text-6xl",
+                                    h1 { class: "mt-10 max-w-lg text-4xl font-bold tracking-tight text-dark-brand sm:text-6xl",
                                         "Decrypt"
                                     }
                                     div { class: "sm:col-span-4 mt-6 p-1",
                                         label {
-                                            class: "block text-sm font-medium leading-6 text-gray-800",
+                                            class: "block text-sm font-medium leading-6 text-dark-brand",
                                             r#for: "dec-key",
                                             "Enter the Key for claw: {id}"
                                         }
                                         div { class: "mt-2 flex",
                                             input {
                                                 autocomplete: "off",
-                                                class: "flex-grow rounded-md px-2 border-0 bg-gray-900/5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-900/10 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6",
+                                                class: "flex-grow rounded-md px-2 border-0 bg-gray-900/5 py-1.5 text-gray-900 shadow-sm sm:text-sm sm:leading-6",
                                                 id: "dec-key",
                                                 name: "key",
                                                 placeholder: "Key",
@@ -47,7 +47,7 @@ pub fn Vault(id: String) -> Element {
                                         }
                                     }
                                     div { class: "mt-10 flex items-center gap-x-6",
-                                        button { class: "hover:cursor-pointer inline-flex items-center gap-x-2 rounded-md bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-[#9AD4D8] shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+                                        button { class: "hover:cursor-pointer inline-flex items-center gap-x-2 rounded-md bg-dark-brand px-3.5 py-2.5 text-sm font-semibold text-brand shadow-sm hover:bg-brand/70",
                                             svg {
                                                 class: "-ml-0.5 h-5 w-5",
                                                 fill: "currentColor",

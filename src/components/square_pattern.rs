@@ -4,9 +4,9 @@ use dioxus::prelude::*;
 pub fn SquarePattern() -> Element {
     rsx! {
         svg {
-            class: "absolute inset-0 -z-10 h-full w-full stroke-accent",
+            class: "absolute inset-0 -z-10 h-full w-full stroke-brand",
             svg {
-                class: "overflow-visible fill-accent-30",
+                class: "overflow-visible fill-brand/30",
                 x: "50%",
                 y: "-1",
                 path {

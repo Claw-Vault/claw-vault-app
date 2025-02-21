@@ -1,6 +1,9 @@
 use dioxus::prelude::*;
 
-use crate::components::{DecryptBlock, EncryptBlock, SquarePattern};
+use crate::{
+    components::{DecryptBlock, EncryptBlock, SquarePattern},
+    utils::GITHUB_URL,
+};
 
 const CLAW_VAULT_PNG: Asset = asset!("/assets/claw-vault.png");
 
@@ -9,7 +12,7 @@ pub fn Home() -> Element {
     let dec_data = use_signal(|| String::new());
 
     rsx! {
-        section { class: "relative isolate pt-14 bg-gray-900",
+        section { class: "relative isolate pt-14",
 
             SquarePattern {}
 
@@ -22,21 +25,21 @@ pub fn Home() -> Element {
                     }
                 }
                 div { class: "mx-auto max-w-2xl lg:mx-0 lg:flex-auto justify-center",
-                    h1 { class: "mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl",
+                    h1 { class: "mt-10 max-w-lg text-4xl font-bold tracking-tight text-dark-brand sm:text-6xl",
                         "A better way to share private data"
                     }
-                    p { class: "mt-6 text-lg leading-8 font-semibold text-gray-400",
+                    p { class: "mt-6 text-lg leading-8 font-semibold text-dark-brand/80",
                         "Claw Vault encrypts your data, providing a unique ID and key for secure transmission. Your recipient can easily access the encrypted content using the ID and key, ensuring confidentiality. Data is automatically deleted upon access or expiration, prioritizing your privacy."
                     }
                     div { class: "mt-10 flex items-center gap-x-6",
                         a {
-                            class: "rounded-md bg-accent px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+                            class: "rounded-md bg-brand px-3.5 py-2.5 text-sm font-semibold text-dark-brand shadow-sm hover:bg-brand/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
                             href: "#claw",
                             "Get started"
                         }
                         a {
-                            class: "text-sm font-semibold leading-6 text-accent",
-                            href: "https://github.com/Claw-Vault/claw-vault",
+                            class: "text-sm font-semibold leading-6 text-dark-brand",
+                            href: GITHUB_URL,
                             target: "_blank",
 
                             "View on GitHub →"
@@ -47,7 +50,7 @@ pub fn Home() -> Element {
         }
 
         section {
-            class: "relative isolate overflow-hidden bg-gray-900",
+            class: "relative isolate overflow-hidden",
             id: "claw",
 
             SquarePattern {}
@@ -62,7 +65,7 @@ pub fn Home() -> Element {
                 }
                 div { class: "mt-20 sm:mt-24 md:mx-auto md:max-w-2xl lg:mx-0 lg:mt-0 lg:w-screen",
                     div { class: "shadow-lg md:rounded-3xl",
-                        div { class: "bg-accent [clip-path:inset(0)] md:[clip-path:inset(0_round_theme(borderRadius.3xl))]",
+                        div { class: "bg-brand [clip-path:inset(0)] md:[clip-path:inset(0_round_theme(borderRadius.3xl))]",
                             div { class: "mx-auto max-w-2xl lg:mx-0 p-16 lg:flex-auto",
                                 DecryptBlock {}
                             }

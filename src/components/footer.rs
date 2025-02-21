@@ -1,7 +1,7 @@
 use chrono::{Datelike, Utc};
 use dioxus::prelude::*;
 
-use crate::Route;
+use crate::{utils::GITHUB_URL, Route};
 
 const FAVICON_PNG: Asset = asset!("/assets/favicon.png");
 
@@ -12,9 +12,9 @@ pub fn Footer() -> Element {
     rsx! {
         Outlet::<Route> {}
 
-        footer { class: "relative isolate overflow-hidden p-4 md:p-8 lg:p-10 bg-accent text-gray-900",
+        footer { class: "relative isolate overflow-hidden p-4 md:p-8 lg:p-10 bg-brand text-dark-brand",
             div { class: "mx-auto max-w-screen-xl text-center",
-                Link { class: "flex justify-center items-center text-2xl font-semibold text-gray-900", to: Route::Home { },
+                Link { class: "flex justify-center items-center text-2xl font-semibold", to: Route::Home { },
                     img {
                         alt: "Claw Vault",
                         class: "w-12 mr-4",
@@ -29,7 +29,7 @@ pub fn Footer() -> Element {
                     li {
                         a {
                             class: "mr-4 hover:underline md:mr-6",
-                            href: "https://github.com/Claw-Vault/claw-vault",
+                            href: GITHUB_URL,
                             target: "_blank",
                             "Github"
                         }

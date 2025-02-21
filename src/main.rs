@@ -5,6 +5,7 @@ use views::{Blog, Home, NotFound, Privacy, Vault};
 
 mod api;
 mod components;
+mod utils;
 mod views;
 
 #[derive(Debug, Clone, Routable, PartialEq)]

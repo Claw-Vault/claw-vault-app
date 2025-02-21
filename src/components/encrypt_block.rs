@@ -47,40 +47,31 @@ pub fn EncryptBlock() -> Element {
         EncryptDialog { show: show_dialog, show_data: show_modal_data, show_progress: show_progress, show_err: show_modal_err }
 
         div {
-            h1 { class: "mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl",
+            h1 { class: "mt-10 max-w-lg text-4xl font-bold tracking-tight text-dark-brand sm:text-6xl",
                 "Encrypt your private data"
             }
-            div { class: "mt-10 col-span-full",
-                label {
-                    class: "block text-sm font-medium leading-6 text-[#9AD4D8]",
-                    r#for: "enc-data",
-                    "Data"
-                }
-                div { class: "mt-2 bg-gray-900",
-                    textarea {
-                        class: "block w-full px-2 rounded-md min-h-32 border-0 bg-[#9AD4D8]/10 py-1.5 text-white shadow-sm ring-1 ring-inset ring-[#9AD4D8]/10 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6",
-                        id: "enc-data",
-                        name: "data",
-                        required: "false",
-                        rows: "3",
-                        oninput: move |e| async move {
-                            enc_data.set(e.value());
-                        },
-                    }
-                }
-                p { class: "mt-3 text-sm leading-6 text-gray-400",
-                    "Enter your private text data"
+            div { class: "mt-12 col-span-full",
+                textarea {
+                    class: "block w-full px-2 rounded-md min-h-32 border-brand border bg-white py-1.5 text-dark-brand shadow-sm sm:text-sm sm:leading-6",
+                    id: "enc-data",
+                    name: "data",
+                    required: "false",
+                    rows: "3",
+                    placeholder: "Enter your private text data",
+                    oninput: move |e| async move {
+                        enc_data.set(e.value());
+                    },
                 }
             }
             div { class: "space-y-12",
-                div { class: "border-b border-white/10 pb-12",
+                div { class: "border-b border-dark-brand/10 pb-12",
                     div { class: "mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" }
                 }
                 div { class: "sm:col-span-6",
-                    label { class: "text-lg font-semibold text-accent",
+                    label { class: "text-lg font-semibold text-dark-brand",
                         "Expiration"
                     }
-                    p { class: "text-sm text-gray-300",
+                    p { class: "text-sm text-gray-500",
                         "How long do you want this data to be accessible to the recipient ?"
                     }
                     fieldset { class: "mt-4",
@@ -89,7 +80,7 @@ pub fn EncryptBlock() -> Element {
                                 div { class: "flex items-center",
                                     input {
                                         checked: "false",
-                                        class: "h-4 w-4 bg-gray-900 border-gray-300 text-[#9AD4D8] focus:ring-[#9AD4D8]",
+                                        class: "h-4 w-4 bg-dark-brand border-gray-500 text-dark-brand focus:ring-dark-brand",
                                         name: "expiration",
                                         r#type: "radio",
                                         oninput: move |e| async move {
@@ -97,7 +88,7 @@ pub fn EncryptBlock() -> Element {
                                         },
                                     }
                                     label {
-                                        class: "ml-3 block text-sm font-medium leading-6 text-gray-100",
+                                        class: "ml-3 block text-sm font-medium leading-6 text-dark-brand",
                                         {er.get_text()}
                                     }
                                 }
@@ -107,7 +98,7 @@ pub fn EncryptBlock() -> Element {
                 }
             }
             div { class: "mt-10 flex items-center gap-x-6",
-                button { class: "hover:cursor-pointer inline-flex items-center gap-x-2 rounded-md bg-[#9AD4D8] px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+                button { class: "hover:cursor-pointer inline-flex items-center gap-x-2 rounded-md bg-brand px-3.5 py-2.5 text-sm font-semibold text-dark-brand shadow-sm hover:bg-brand/70",
                     disabled: selected_expiry().is_none() || enc_data().is_empty(),
                     onclick: move |_| async move {
                         on_encrypt(

@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @tailwind utilities;
 
+@theme {
+    --color-brand: #9AD4D8;
+    --color-dark-brand: #244F5F;
+}
+
 @layer base {
     :root {
         --background: 0 0% 100%;
@@ -66,7 +71,7 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.bg-accent {
+/* .bg-accent {
     background-color: #9ad4d8;
 }
 
@@ -80,4 +85,4 @@ body::-webkit-scrollbar {
 
 .fill-accent-30 {
     fill: rgba(154, 212, 216, 0.2);
-}
+} */

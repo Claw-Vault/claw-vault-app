@@ -9,3 +9,5 @@
 *.lock*
 .env
 node_modules
+
+assets/tailwind.css

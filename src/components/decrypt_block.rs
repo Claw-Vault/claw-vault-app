@@ -9,11 +9,6 @@ pub fn DecryptBlock() -> Element {
 
     rsx! {
         div {
-            // action: "\\#",
-            // method: "dialog",
-            // onsubmit: move |_| async move {
-            //     // nav.push(target)
-            // },
             h1 { class: "mt-10 max-w-lg text-4xl font-bold tracking-tight text-dark-brand sm:text-6xl",
                 "Get Data"
             }
@@ -32,8 +27,15 @@ pub fn DecryptBlock() -> Element {
                         placeholder: "ID",
                         r#type: "text",
                         required: "false",
+                        value: dec_id,
                         oninput: move |e| async move {
-                            dec_id.set(e.value());
+                            let tokens = e.value().split('.').map(|s| s.to_owned()).collect::<Vec<_>>();
+                            let id = if tokens.len() > 1 {
+                                tokens.into_iter().nth(0).unwrap().to_owned()
+                            } else {
+                                e.value()
+                            };
+                            dec_id.set(id);
                         },
                     }
                 }

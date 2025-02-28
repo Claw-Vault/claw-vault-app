@@ -1,11 +1,11 @@
 use dioxus::prelude::*;
 
 use crate::{
-    api::{EncryptResponse, ErrorResponse},
+    api::{EmptyResponse, EncryptResponse},
     ticks::Ticker,
 };
 
-pub type EDialogData = Result<Option<EncryptResponse>, ServerFnError<ErrorResponse>>;
+pub type EDialogData = Result<Option<EncryptResponse>, ServerFnError<EmptyResponse>>;
 
 #[component]
 pub fn EncryptDialog(

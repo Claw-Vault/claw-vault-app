@@ -20,7 +20,7 @@ enum Route {
     #[route("/privacy")]
     Privacy {},
 
-    #[route("/:id")]
+    #[route("/vault/:id")]
     Vault { id: String },
 
     #[route("/:..segments")]

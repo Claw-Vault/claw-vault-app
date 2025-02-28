@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 use crate::{
-    api::{self, EncryptResponse, ErrorResponse},
+    api::{self, EmptyResponse, EncryptResponse},
     components::{encrypt_dialog::EDialogData, EncryptDialog},
     ticks::use_ticks,
 };
@@ -147,7 +147,7 @@ async fn on_encrypt(
     enc_data: &mut Signal<String>,
     mut on_encrypt_click: impl FnMut(bool),
     mut on_success: impl FnMut(EncryptResponse),
-    mut on_err: impl FnMut(ServerFnError<ErrorResponse>),
+    mut on_err: impl FnMut(ServerFnError<EmptyResponse>),
 ) {
     let expiry = match selected_expiry() {
         Some(e) => e,

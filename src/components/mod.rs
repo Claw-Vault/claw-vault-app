@@ -18,3 +18,7 @@ pub use decrypt_block::DecryptBlock;
 
 mod encrypt_dialog;
 pub use encrypt_dialog::EncryptDialog;
+
+mod decrypt_dialog;
+pub use decrypt_dialog::DDialogData;
+pub use decrypt_dialog::DecryptDialog;

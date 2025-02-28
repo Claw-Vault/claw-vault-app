@@ -1,6 +1,7 @@
 use std::{fmt::Display, str::FromStr};
 
 use dioxus::prelude::*;
+use reqwest::StatusCode;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -109,8 +110,8 @@ pub async fn decrypt_data(
     })
 }
 
-#[server(ClawExistsServer)]
-pub async fn claw_exists(id: String) -> Result<Option<()>, ServerFnError> {
+#[server]
+pub async fn claw_exists(id: String) -> Result<u16, ServerFnError> {
     let client = reqwest::Client::new();
     let res = client
         .get(format!("{}/api/v1/claw/{}", get_api_url(), id))
@@ -119,13 +120,9 @@ pub async fn claw_exists(id: String) -> Result<Option<()>, ServerFnError> {
 
     let res = match res {
         Ok(r) => r,
-        Err(_) => return Ok(None),
+        Err(_) => return Ok(StatusCode::INTERNAL_SERVER_ERROR.as_u16()),
     };
-    if !res.status().is_success() {
-        return Ok(None);
-    }
-
-    Ok(Some(()))
+    Ok(res.status().as_u16())
 }
 fn get_api_url() -> String {
     env!("BACKEND_URL").to_owned()

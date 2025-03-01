@@ -1,4 +1,4 @@
-# Claw Vault - App
+# [`Claw Vault - App`](https://claw-vault.up.railway.app)
 
 Frontend for ClawVault written in svelte.
 

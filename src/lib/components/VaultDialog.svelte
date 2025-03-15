@@ -5,7 +5,7 @@
     import type { EncryptResponse } from "$lib/api/models/encrypt";
     import type { ApiEmpty } from "$lib/api/models/empty";
     import type { DecryptResponse } from "$lib/api/models/decrypt";
-    import { isType } from "$lib/utils";
+    import { isApiEmpty, isDecryptResponse, isEncryptResponse, isType } from "$lib/utils";
     import Input from "./ui/input/input.svelte";
     import Textarea from "./ui/textarea/textarea.svelte";
 
@@ -87,7 +87,7 @@
         {/if}
     </AlertDialog.Trigger>
     <AlertDialog.Content class="sm:max-w-lg bg-brand text-brand-dark">
-        {#if isType<EncryptResponse>(data, "valid_for")}
+        {#if isEncryptResponse(data)}
             <AlertDialog.Header>
                 <AlertDialog.Title>Data encrypted !</AlertDialog.Title>
                 <AlertDialog.Description class="text-brand-dark/70">
@@ -118,7 +118,7 @@
                     <p class="text-sm">Dialog will close in {remaining} seconds</p>
                 </div>
             </div>
-        {:else if isType<DecryptResponse>(data, "data")}
+        {:else if isDecryptResponse(data)}
             <AlertDialog.Header>
                 <AlertDialog.Title>Data decrypted !</AlertDialog.Title>
                 <AlertDialog.Description class="text-brand-dark/70">
@@ -133,7 +133,7 @@
                     <p class="text-sm">Dialog will close in {remaining} seconds</p>
                 </div>
             </div>
-        {:else if isType<ApiEmpty>(data, "status")}
+        {:else if isApiEmpty(data)}
             <AlertDialog.Header>
                 <AlertDialog.Title>Error occurred</AlertDialog.Title>
             </AlertDialog.Header>
@@ -155,15 +155,15 @@
             </div>
         {/if}
 
-        {#if data !== undefined && !isType<ApiEmpty>(data, "status")}
+        {#if data !== undefined && !isApiEmpty(data)}
             <AlertDialog.Footer>
                 <AlertDialog.Action
                     onclick={() => {
                         let text = "";
 
-                        if (isType<EncryptResponse>(data, "valid_for")) {
+                        if (isEncryptResponse(data)) {
                             text = `${data.id}.${data.key}`;
-                        } else if (isType<DecryptResponse>(data, "data")) {
+                        } else if (isDecryptResponse(data)) {
                             text = data.data;
                         }
 
@@ -179,7 +179,7 @@
                     class="flex items-center gap-x-2 bg-brand-dark hover:bg-brand-dark/70 hover:text-brand text-brand"
                 >
                     <ClipboardCopy class="size-5" />
-                    Copy data
+                    Copy {isEncryptResponse(data) ? "ID.Key" : "Data"}
                 </AlertDialog.Action>
             </AlertDialog.Footer>
         {/if}
